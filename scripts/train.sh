@@ -1,0 +1,25 @@
+python -m torch.distributed.run --nproc_per_node 2 main.py \
+        --epochs 12 \
+        --model vit_small_patch14_dinov2.lvd142m \
+        --model_ema True \
+        --batch_size 16 \
+        --input_size 518 \
+        --data_set image_folder \
+        --data_path train_images/Shadow_0809/Train \
+        --eval_data_path train_images/Shadow_0809/Test \
+        --nb_classes 2 \
+        --drop_path 0.2 \
+        --num_workers 8 \
+        --warmup_epochs 4 \
+        --save_ckpt true \
+        --output_dir checkpoints/VIT_ema \
+        --cutmix 0 \
+        --mixup 0 \
+        --hflip 0.5 \
+        --vflip 0.5 \
+        --color_jitter 0 \
+        --lr 1e-4 \
+        --min_lr 1e-6 \
+        --seed 69 \
+        --eval True \
+        --model_ema_eval True
